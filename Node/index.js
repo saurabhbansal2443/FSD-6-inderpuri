@@ -31,12 +31,13 @@ import fs from "fs";
 // Creating a new file and also writing content in the file
 //  const data = fs.writeFileSync("./test1.txt", "Content chnaged");
 
-const data = fs.writeFileSync(
-  "./test/test.js",
-  'import fs from "fs"; fs.unlinkSync("./myfile.txt");'
-);
+// const data = fs.writeFileSync(
+//   "./test/test.js",
+//   'import fs from "fs"; fs.unlinkSync("./myfile.txt");'
+// );
 
 // This will delete the file
 // fs.unlinkSync("./myfile.txt");
 
 // fs.mkdirSync("./test")
+fs.rmdirSync("./test", { recursive: true, force: true });
