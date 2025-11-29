@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- <h1>I am heading tag</h1> -->
+      <!-- <div class="parent">
+        <h1>I am parent h1tag</h1>
+        <div class="child">
+             <h1>I am child h1tag</h1>
+        </div>
+       </div> -->
+    </div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script>
+    const ele = React.createElement("div", { className: "parent" }, [
+      React.createElement("h1", {}, "I am parent h1tag"),
+      React.createElement("div", { className: "child" }, [
+        React.createElement("h1", {}, "I am child h1tag"),
+      ]),
+    ]);
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(ele);
+  </script>
+</html>
