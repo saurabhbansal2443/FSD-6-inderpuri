@@ -1,9 +1,13 @@
 import React from "react";
-
+//https://dummyjson.com/products/search?q=phone
 const App = () => {
   return (
     <div style={styles.root}>
-      <input type="text" placeholder="Search products..." style={styles.input} />
+      <input
+        type="text"
+        placeholder="Search products..."
+        style={styles.input}
+      />
 
       <div style={styles.suggestionContainer}>
         <div style={styles.suggestion}>
@@ -65,6 +69,6 @@ const styles = {
 };
 
 // Add hover using JS because inline CSS cannot do :hover
-styles.suggestion[':hover'] = {};
+styles.suggestion[":hover"] = {};
 
 export default App;
