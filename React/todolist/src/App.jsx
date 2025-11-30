@@ -7,8 +7,13 @@ const App = () => {
 
   const handleBtnClick = () => {
     if (task.trim().length === 0) return;
-    setTaskList([...taskList, task]);
+    setTaskList([...taskList, { task: task, id: Date.now() }]);
     setTask("");
+  };
+
+  const deleteTask = (id) => {
+    let filteredTask = taskList.filter((taskObj) => taskObj.id !== id);
+    setTaskList(filteredTask);
   };
 
   return (
@@ -29,10 +34,17 @@ const App = () => {
       </div>
 
       <div style={style.todoContainer}>
-        {taskList.map((task) => (
-          <div style={style.todo}>
-            <div style={style.text}>{task}</div>
-            <button style={style.deleteBtn}>Delete</button>
+        {taskList.map((taskObj) => (
+          <div key={taskObj.id} style={style.todo}>
+            <div style={style.text}>{taskObj.task}</div>
+            <button
+              onClick={() => {
+                deleteTask(taskObj.id);
+              }}
+              style={style.deleteBtn}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
