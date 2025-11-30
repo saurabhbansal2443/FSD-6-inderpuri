@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 //https://dummyjson.com/products/search?q=phone
 const App = () => {
   const [query, setQuery] = useState("");
   const [searchSuggestion, setSearchSuggestion] = useState([]);
-
+  let timerRef = useRef(null);
   async function getData() {
     if (query.trim().length == 0) return;
-    console.log("search Api called for query   " , query)
+    console.log("search Api called for query   ", query);
     let data = await fetch(`https://dummyjson.com/products/search?q=${query}`);
     let jsonData = await data.json();
     setSearchSuggestion(jsonData.products);
   }
   useEffect(() => {
-    getData();
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(() => {
+      getData();
+    }, 400);
   }, [query]);
   return (
     <div style={styles.root}>
